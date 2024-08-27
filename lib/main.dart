@@ -70,9 +70,13 @@ class _LoginPageState extends State<LoginPage> {
 
   Future<void> _saveTokenToFile(String token) async {
     try {
+      // รับเส้นทางของ directory ที่ใช้เก็บไฟล์
       final directory = await getApplicationDocumentsDirectory();
-      final file = File('${directory.path}D:/work2/login_api/lib/token.txt');
+      final file = File('${directory.path}lib/token.txt');
+
+      // บันทึก token ลงในไฟล์
       await file.writeAsString(token);
+      print('Token saved successfully');
     } catch (e) {
       print('Error saving token: $e');
     }
