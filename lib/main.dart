@@ -357,7 +357,7 @@ class _UserInformationPageState extends State<UserInformationPage> {
                           ),
                         ),
                         SizedBox(height: 20),
-                        _buildInfoItem('User ID', _userInfo['userId'] ?? ''),
+                        _buildInfoItem('User ID', _userInfo['_id'] ?? ''),
                         _buildInfoItem('Username', _userInfo['username'] ?? ''),
                         _buildInfoItem('First Name', _userInfo['fname'] ?? ''),
                         _buildInfoItem('Last Name', _userInfo['lname'] ?? ''),
