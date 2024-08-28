@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+//Login
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -142,6 +143,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
+//Signup
 class SignUpPage extends StatefulWidget {
   @override
   _SignUpPageState createState() => _SignUpPageState();
