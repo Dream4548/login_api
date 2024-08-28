@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:google_fonts/google_fonts.dart';
-import 'dart:io';
-import 'package:path_provider/path_provider.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 void main() async {
@@ -13,6 +11,8 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,6 +27,8 @@ class MyApp extends StatelessWidget {
 
 //Login
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -56,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
         print('Login successful. Token: $token');
 
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Login successful')),
+          const SnackBar(content: const Text('Login successful')),
         );
 
         // Navigate to UserInformationPage
@@ -66,16 +68,17 @@ class _LoginPageState extends State<LoginPage> {
         );
       } else if (response.statusCode == 401) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Invalid username or password')),
+          const SnackBar(content: Text('Invalid username or password')),
         );
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Login failed. Please try again.')),
+          const SnackBar(content: Text('Login failed. Please try again.')),
         );
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('An error occurred. Please try again later.')),
+        const SnackBar(
+            content: Text('An error occurred. Please try again later.')),
       );
     }
   }
@@ -84,10 +87,10 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: const Text('Login'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -95,40 +98,41 @@ class _LoginPageState extends State<LoginPage> {
             Text(
               'WELCOME',
               style: GoogleFonts.lato(
-                textStyle: TextStyle(color: Colors.blue, letterSpacing: .5),
+                textStyle:
+                    const TextStyle(color: Colors.blue, letterSpacing: .5),
                 fontSize: 50,
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 48),
+            const SizedBox(height: 48),
             TextField(
               controller: _usernameController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Username',
                 border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextField(
               controller: _passwordController,
               obscureText: true,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Password',
                 border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             ElevatedButton(
-              child: Text('Login'),
+              child: const Text('Login'),
               onPressed: _login,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue, // สีพื้นหลังของปุ่ม
                 foregroundColor: Colors.white, // สีของตัวอักษรในปุ่ม
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextButton(
-              child: Text('Don\'t have an account? Sign Up'),
+              child: const Text('Don\'t have an account? Sign Up'),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -145,6 +149,8 @@ class _LoginPageState extends State<LoginPage> {
 
 //Signup
 class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
+
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
@@ -166,12 +172,12 @@ class _SignUpPageState extends State<SignUpPage> {
 
     if (response.statusCode == 201) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('User registered successfully')),
+        const SnackBar(content: Text('User registered successfully')),
       );
       Navigator.pop(context);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Registration failed. Please try again.')),
+        const SnackBar(content: Text('Registration failed. Please try again.')),
       );
     }
   }
@@ -180,10 +186,10 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sign Up'),
+        title: const Text('Sign Up'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -191,40 +197,41 @@ class _SignUpPageState extends State<SignUpPage> {
             Text(
               'SIGN UP',
               style: GoogleFonts.lato(
-                textStyle: TextStyle(color: Colors.blue, letterSpacing: .5),
+                textStyle:
+                    const TextStyle(color: Colors.blue, letterSpacing: .5),
                 fontSize: 50,
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 48),
+            const SizedBox(height: 48),
             TextField(
               controller: _usernameController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Username',
                 border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextField(
               controller: _passwordController,
               obscureText: true,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Password',
                 border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             ElevatedButton(
-              child: Text('Sign Up'),
+              child: const Text('Sign Up'),
               onPressed: _signUp,
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue,
                 foregroundColor: Colors.white,
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextButton(
-              child: Text('Already have an account? Login'),
+              child: const Text('Already have an account? Login'),
               onPressed: () {
                 Navigator.pop(context);
               },
@@ -238,6 +245,8 @@ class _SignUpPageState extends State<SignUpPage> {
 
 //UserInterform
 class UserInformationPage extends StatefulWidget {
+  const UserInformationPage({super.key});
+
   @override
   _UserInformationPageState createState() => _UserInformationPageState();
 }
@@ -295,7 +304,7 @@ class _UserInformationPageState extends State<UserInformationPage> {
 
   Widget _buildInfoItem(String label, String value) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -328,7 +337,7 @@ class _UserInformationPageState extends State<UserInformationPage> {
         ),
       ),
       body: _isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : _error.isNotEmpty
               ? Center(
                   child: Text(
@@ -341,7 +350,7 @@ class _UserInformationPageState extends State<UserInformationPage> {
                 )
               : Center(
                   child: Container(
-                    padding: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
                     width: MediaQuery.of(context).size.width * 0.9,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.blue, width: 2),
@@ -358,12 +367,12 @@ class _UserInformationPageState extends State<UserInformationPage> {
                             color: Colors.blue,
                           ),
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         _buildInfoItem('User ID', _userInfo['_id'] ?? ''),
                         _buildInfoItem('Username', _userInfo['username'] ?? ''),
                         _buildInfoItem('First Name', _userInfo['fname'] ?? ''),
                         _buildInfoItem('Last Name', _userInfo['lname'] ?? ''),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: () async {
                             final result = await Navigator.of(context).push(
@@ -379,7 +388,7 @@ class _UserInformationPageState extends State<UserInformationPage> {
                               _fetchUserInformation(); // อัพเดตข้อมูลหลังการแก้ไข
                             }
                           },
-                          child: Text('Edit Profile'),
+                          child: const Text('Edit Profile'),
                         ),
                       ],
                     ),
@@ -394,7 +403,8 @@ class EditUserNamePage extends StatefulWidget {
   final String currentFname;
   final String currentLname;
 
-  EditUserNamePage({required this.currentFname, required this.currentLname});
+  EditUserNamePage(
+      {super.key, required this.currentFname, required this.currentLname});
 
   @override
   _EditUserNamePageState createState() => _EditUserNamePageState();
@@ -462,7 +472,7 @@ class _EditUserNamePageState extends State<EditUserNamePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Profile'),
+        title: const Text('Edit Profile'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -470,25 +480,25 @@ class _EditUserNamePageState extends State<EditUserNamePage> {
           children: [
             TextField(
               controller: _fnameController,
-              decoration: InputDecoration(labelText: 'First Name'),
+              decoration: const InputDecoration(labelText: 'First Name'),
             ),
             TextField(
               controller: _lnameController,
-              decoration: InputDecoration(labelText: 'Last Name'),
+              decoration: const InputDecoration(labelText: 'Last Name'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             _isLoading
-                ? CircularProgressIndicator()
+                ? const CircularProgressIndicator()
                 : Column(
                     children: [
                       ElevatedButton(
                         onPressed: _updateUserProfile,
-                        child: Text('Save Changes'),
+                        child: const Text('Save Changes'),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       ElevatedButton(
                         onPressed: _deleteUserName,
-                        child: Text('Clear Names'),
+                        child: const Text('Clear Names'),
                         style: ElevatedButton.styleFrom(),
                       ),
                     ],
@@ -498,7 +508,7 @@ class _EditUserNamePageState extends State<EditUserNamePage> {
                 padding: const EdgeInsets.only(top: 20.0),
                 child: Text(
                   _error,
-                  style: TextStyle(color: Colors.red),
+                  style: const TextStyle(color: Colors.red),
                 ),
               ),
           ],
